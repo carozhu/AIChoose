@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+	<title>智能选装demo</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<meta name="format-detection" content="address=no;">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="Expires" content="-1">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="apple-touch-icon-precomposed" href="">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="plug_in/dialog/dialog.css"/>
+	<body>
+		<!-- 头部 -->
+		<header id="header" class="header">
+			<h1 >运动说智能选装demo</h1>
+		</header>
+		<!-- 内容 -->
+		<div class="container">
+			<section>
+				<span class="title">选择运动类型</span>
+				<div>
+					<input class="input_radio" type="radio" value="BASKETBALL" id="basketball" name="sport_type" checked/>
+					<label for="basketball">篮球</label>
+					<input class="input_radio" type="radio" value="TENNIS" id="tennis" name="sport_type"/>
+					<label for="tennis">网球</label>
+					<input class="input_radio" type="radio" value="RUN" id="run" name="sport_type"/>
+					<label for="run" >跑步</label>
+				</div>
+			</section>
+			<!-- 篮球选项 -->
+			<div id="basketball_opts_container">
+				<!-- 选择装备类型 -->
+				<section>
+					<span class="title">选择运动装备</span>
+					<div>
+						<input class="input_radio"  type="radio" value="SHOSE" id="shose" name="equipment_type" checked />
+						<label for="shose">鞋子</label>
+						<input class="input_radio"  type="radio" value="OTHER" id="other" name="equipment_type" disabled="false" />
+						<label for="other" class="disabled">其他</label>
+					</div>
+				</section>
+				<!-- 选择体重 -->
+				<section>
+					<span class="title">选择体重</span>
+					<div>
+						<input class="input_radio"  type="radio" value="WEIGHT_LOW" id="u70" name="weight"/>
+						<label for="u70">70kg以下</label>
+						<input class="input_radio"  type="radio" value="WEIGHT_MIDDLE" id='b7085' name="weight" checked />
+						<label for="b7085">70kg ~ 85kg</label>
+						<input class="input_radio"  type="radio" value="WEIGHT_HIGH" id="o85" name="weight"/>
+						<label for="o85">85kg以上</label>
+					</div>
+				</section>
+				<!-- 选择位置 -->
+				<section>
+					<span class="title">选择位置</span>
+					<div>
+						<input class="input_radio"  type="radio" value="POSITION_S" id="position_s" name="position"/>
+						<label for="position_s">后卫</label>
+						<input class="input_radio"  type="radio" value="POSITION_SF" id='position_sf' name="position" checked />
+						<label for="position_sf">小前锋</label>
+						<input class="input_radio"  type="radio" value="POSITION_PF" id="position_pf" name="position"/>
+						<label for="position_pf">大前锋</label>
+						<input class="input_radio"  type="radio" value="POSITION_C" id="position_c" name="position"/>
+						<label for="position_c">中锋</label>
+					</div>
+				</section>
+				<!-- 选择杀手锏 -->
+				<section>
+					<span class="title">杀手锏</span>
+					<div>
+						<input class="input_radio"  type="radio" value="0" id="skill_0" name="skill" checked>
+						<label for="skill_0">控球/传球</label>
+						<input class="input_radio"  type="radio" value="1" id="skill_1" name="skill">
+						<label for="skill_1">持球突破</label>
+						<input class="input_radio"  type="radio" value="2" id="skill_2" name="skill">
+						<label for="skill_2">急停跳投</label>
+						<input class="input_radio"  type="radio" value="3" id="skill_3" name="skill">
+						<label for="skill_3">干拔</label>
+						<input class="input_radio"  type="radio" value="4" id="skill_4" name="skill">
+						<label for="skill_4">背/面框单打</label>
+						<input class="input_radio"  type="radio" value="5" id="skill_5" name="skill">
+						<label for="skill_5">抢断</label>
+						<input class="input_radio"  type="radio" value="6" id="skill_6" name="skill">
+						<label for="skill_6">勾手</label>
+						<input class="input_radio"  type="radio" value="7" id="skill_7" name="skill">
+						<label for="skill_7">变向</label>
+						<input class="input_radio"  type="radio" value="8" id="skill_8" name="skill">
+						<label for="skill_8">抢篮板</label>
+						<input class="input_radio"  type="radio" value="9" id="skill_9" name="skill">
+						<label for="skill_9">贴身防守</label>
+						<input class="input_radio"  type="radio" value="10" id="skill_10" name="skill">
+						<label for="skill_10">扣篮</label>
+						<input class="input_radio"  type="radio" value="11" id="skill_11" name="skill">
+						<label for="skill_11">远投</label>
+						<input class="input_radio"  type="radio" value="12" id="skill_12" name="skill">
+						<label for="skill_12">抛投</label>
+					</div>
+				</section>
+				<!-- 选择技术类型 -->
+				<section>
+					<span class="title">选择技术类型</span>
+					<div>
+						<input class="input_radio"  type="radio" value="SPEED" id="speed" name="tec" checked>
+						<label for="speed">速度型</label>
+						<input class="input_radio"  type="radio" value="ACR" id="arc" name="tec">
+						<label for="arc">技巧型</label>
+						<input class="input_radio"  type="radio" value="POWER" id="power" name="tec">
+						<label for="power">力量型</label>
+					</div>
+				</section>
+				<!-- 选择场地 -->
+				<section>
+					<span class="title">选择场地</span>
+					<div>
+						<input class="input_radio"  type="radio" value="INDOOR" id="indoor" name="door" checked/>
+						<label for="indoor">室内</label>
+						<input class="input_radio"  type="radio" value="OUTDOOR" id="outdoor" name="door" />
+						<label for="outdoor">室外</label>
+					</div>
+				</section>
+			</div>
+			<!-- 网球选项 -->
+			<div id="tennis_opts_container" style="display:none;">
+				<!-- 选择装备类型 -->
+				<section>
+					<span class="title">选择运动装备</span>
+					<div>
+						<input class="input_radio"  type="radio" value="RACKET" id="racket" name="tr_equipment_type" checked />
+						<label for="racket">网球拍</label>
+						<input class="input_radio"  type="radio" value="OTHER" id="tr_other" name="tr_equipment_type" disabled="false" />
+						<label for="tr_other" class="disabled">其他</label>
+					</div>
+				</section>
+				<!-- 选择性别 -->
+				<section>
+					<span class="title">选择性别</span>
+					<div>
+						<input class="input_radio" type="radio" name="tr_sex" value="MALE" id="male" checked/>
+						<label for="male">男性</label>
+						<input class="input_radio" type="radio" name="tr_sex" value="FEMALE" id="female"/>
+						<label for="female">女性</label>
+					</div>
+				</section>
+				<!-- 选择体重 -->
+				<section>
+					<span class="title">选择体重</span>
+					<div>
+						<input type="radio" name="tr_weight" value="LIGHT" class="input_radio" id="light"/>
+						<label for="light">轻</label>
+						<input type="radio" name="tr_weight" value="GENERAL" class="input_radio" id="general" checked/>
+						<label for="general">中</label>
+						<input type="radio" name="tr_weight" value="HEAVY" class="input_radio" id="heavy"/>
+						<label for="heavy">重</label>
+					</div>
+				</section>
+				<!-- 选择水平 -->
+				<section>
+					<span class="title">选择水平</span>
+					<div>
+						<input type="radio" name="tr_level" value="LOW" class="input_radio" id="tr_low"/>
+						<label for="tr_low">低</label>
+						<input type="radio" name="tr_level" value="MIDDLE" class="input_radio" id="tr_middle" checked/>
+						<label for="tr_middle">中</label>
+						<input type="radio" name="tr_level" value="HIGH" class="input_radio" id="tr_high"/>
+						<label for="tr_high">高</label>
+					</div>
+				</section>
+				<!-- 选择控制区域 -->
+				<section>
+					<span class="title">选择控制区域</span>
+					<div>
+						<input type="radio" name="tr_area" value="BASELINE" class="input_radio" id="tr_baseline"/>
+						<label for="tr_baseline">底线型</label>
+						<input type="radio" name="tr_area" value="AREA_ALL" class="input_radio" id="tr_area_all" checked/>
+						<label for="tr_area_all">综合型</label>
+						<input type="radio" name="tr_area" value="NET" class="input_radio" id="tr_net"/>
+						<label for="tr_net">上网型</label>
+					</div>
+				</section>
+				<!-- 选择发力-->
+				<section>
+					<span class="title">选择发力类型</span>
+					<div>
+						<input type="radio" name="tr_strength" value="BORROW" class="input_radio" id="tr_borrow"/>
+						<label for="tr_borrow">接力型</label>
+						<input type="radio" name="tr_strength" value="ALL" class="input_radio" id="tr_all" checked/>
+						<label for="tr_all">综合型</label>
+						<input type="radio" name="tr_strength" value="INITA" class="input_radio" id="tr_inita"/>
+						<label for="tr_inita">主动发力型</label>
+					</div>
+				</section>
+				<!-- 选择打球风格-->
+				<section>
+					<span class="title">选择打球风格</span>
+					<div>
+						<input type="radio" name="tr_style" value="CONTROL" class="input_radio" id="tr_control" checked/>
+						<label for="tr_control">控制型</label>
+						<input type="radio" name="tr_style" value="PROWER" class="input_radio" id="tr_prower"/>
+						<label for="tr_prower">力量型</label>
+						<input type="radio" name="tr_style" value="COMPLEX" class="input_radio" id="tr_complex"/>
+						<label for="tr_complex">综合型</label>
+					</div>
+				</section>
+			</div>
+			<!-- 跑鞋选项 -->
+			<div id="run_opts_container" style="display:none;">
+				<!-- 选择装备类型 -->
+				<section>
+					<span class="title">选择运动装备</span>
+					<div>
+						<input class="input_radio"  type="radio" value="SHOSE" id="rs_shose" name="rs_equipment_type" checked />
+						<label for="rs_shose">跑步鞋</label>
+						<input class="input_radio"  type="radio" value="OTHER" id="rs_other" name="rs_equipment_type" disabled="false" />
+						<label for="rs_other" class="disabled">其他</label>
+					</div>
+				</section>
+				<!-- 选装跑步类型 -->
+				<section>
+					<span class="title">你的跑步鞋是用来</span>
+					<div>
+						<input class="input_radio"  type="radio" value="MARATHON" id="rs_marathon" name="rs_run_type" checked />
+						<label for="rs_marathon">参加马拉松</label>
+						<input class="input_radio"  type="radio" value="RECOVER" id="rs_recover" name="rs_run_type"  />
+						<label for="rs_recover" >伤后恢复训练</label>
+						<input class="input_radio"  type="radio" value="CROSS_COUNTRY" id="rs_cross_country" name="rs_run_type"/>
+						<label for="rs_cross_country" >越野</label>
+						<input class="input_radio"  type="radio" value="FASHION" id="rs_fashion" name="rs_run_type" />
+						<label for="rs_fashion" >时尚滑板鞋</label>
+						<input class="input_radio"  type="radio" value="DIALY" id="rs_dialy" name="rs_run_type"  />
+						<label for="rs_dialy" >日常健康慢跑</label>
+					</div>
+				</section>
+				<div id="rs_sex_weight_container" style="display:none;">
+					<!-- 选择性别 -->
+					<section>
+						<span class="title">选择性别</span>
+						<div>
+							<input class="input_radio"  type="radio" value="MALE" id="rs_male" name="rs_sex" checked />
+							<label for="rs_male">男</label>
+							<input class="input_radio"  type="radio" value="FAMALE" id="rs_famale" name="rs_sex" />
+							<label for="rs_famale" >女</label>
+						</div>
+					</section>
+					<!-- 选择体重 -->
+					<section>
+						<span class="title">选择体重</span>
+						<div>
+							<input class="input_radio"  type="radio" value="WEIGHT_LOW" id="rs_weight_low" name="rs_weight" checked />
+							<label for="rs_weight_low">轻</label>
+							<input class="input_radio"  type="radio" value="WEIGHT_MIDDLE" id="rs_weight_middle" name="rs_weight"/>
+							<label for="rs_weight_middle">一般</label>
+							<input class="input_radio"  type="radio" value="WEIGHT_HIGH" id="rs_weight_high" name="rs_weight"  />
+							<label for="rs_weight_high">重</label>
+						</div>
+					</section>
+					<!-- 选装跑量-->
+					<section>
+						<span class="title">你每次的跑量是</span>
+						<div>
+							<input class="input_radio"  type="radio" value="LOW" id="rs_amount_l" name="rs_amount" checked />
+							<label for="rs_amount_l">5km以下</label>
+							<input class="input_radio"  type="radio" value="MIDDLE" id="rs_amount_m" name="rs_amount"/>
+							<label for="rs_amount_m" >5-10km</label>
+							<input class="input_radio"  type="radio" value="HIGH" id="rs_amount_h" name="rs_amount"/>
+							<label for="rs_amount_h">10km</label>
+						</div>
+					</section>
+				</div>
+				<div id="tr_country_type_container" style="display:none;">
+					<!-- 选装越野类型-->
+					<section>
+						<span class="title">你的越野类型是</span>
+						<div>
+							<input class="input_radio"  type="radio" value="COMPETION" id="rs_country_type_c" name="rs_country_type" checked />
+							<label for="rs_country_type_c">竞赛</label>
+							<input class="input_radio"  type="radio" value="WATERPROOF" id="rs_country_type_w" name="rs_country_type" />
+							<label for="rs_country_type_w">防水</label>
+							<input class="input_radio"  type="radio" value="GENERAL" id="rs_country_type_g" name="rs_country_type" />
+							<label for="rs_country_type_g">普通</label>
+						</div>
+					</section>
+				</div>
+				<div id="dialy_container" style="display:none;">
+					<!-- 选装鞋重-->
+					<section>
+						<span class="title">你希望鞋子重量如何</span>
+						<div>
+							<input class="input_radio"  type="radio" value="NORMAL" id="rs_shose_weight_n" name="rs_shose_weight" checked />
+							<label for="rs_shose_weight_n">常规</label>
+							<input class="input_radio"  type="radio" value="LIGHT" id="rs_shose_weight_l" name="rs_shose_weight" />
+							<label for="rs_shose_weight_l">轻量</label>
+						</div>
+					</section>
+					<!-- 选择足弓 -->
+					<section>
+						<span class="title">你的足弓</span>
+						<div>
+							<input class="input_radio"  type="radio" value="LOW" id="rs_arch_l" name="rs_arch" checked />
+							<label for="rs_arch_l">平</label>
+							<input class="input_radio"  type="radio" value="MIDDLE" id="rs_arch_m" name="rs_arch" />
+							<label for="rs_arch_m" >正常</label>
+							<input class="input_radio"  type="radio" value="HIGH" id="rs_arch_h" name="rs_arch" />
+							<label for="rs_arch_h">高</label>
+						</div>
+					</section>
+					<!-- 选择足旋 -->
+					<section>
+						<span class="title">你的足旋</span>
+						<div>
+							<input class="input_radio"  type="radio" value="LOW" id="rs_spin_l" name="rs_spin" checked />
+							<label for="rs_spin_l">过</label>
+							<input class="input_radio"  type="radio" value="MIDDLE" id="rs_spin_m" name="rs_spin" />
+							<label for="rs_spin_m" >正常</label>
+							<input class="input_radio"  type="radio" value="HIGH" id="rs_spin_h" name="rs_spin" />
+							<label for="rs_spin_h">不足</label>
+						</div>
+					</section>
+				</div>
+			</div>
+			<div id="submit" class="submit-btn">智能匹配装备</div>
+	</div>
+	<!-- 底部 -->
+	<footer id="footer" class="">
+		
+	</footer>
+	<!-- 选择运动类型 -->
+</body>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="plug_in/dialog/dialog.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="shose.js"></script>
+<script>
+	//全局变量，用于记录选择的答案
+	var SPORT ={
+			'BASKETBALL':{
+				'SHOSE':{
+					'weight' : 'WEIGHT_MIDDLE',
+					'position' : 'POSITION_SF',
+					'tec' : 'SPEED',
+					'skill' : '0',
+					'door':'INDOOR'
+					}
+				},
+			'TENNIS':{
+				'RACKET':{
+					'sex':'MALE',
+					'weight':'GENERAL',
+					'level':'MIDDLE',
+					'area':'AREA_ALL',
+					'strength':'ALL',
+					'style':'CONTROL'
+				}
+			},
+			'RUN':{
+				'SHOSE':{
+					'run_type':"MARATHON",
+					'sex':'MALE',
+					'amount':'LOW',
+					'country_type':'COMPETION',
+					'weight':'WEIGHT_LOW',
+					'shose_weight':'NORMAL',
+					'arch':'LOW',
+					'spin':'LOW'
+				}
+			}
+	}
+	$(document).ready(function(){
+		//默认选中篮球，把篮球的选项展示出来
+		$('input[name=sport_type]').change(function(){
+			var sport_type = this.value;
+			if(sport_type =='BASKETBALL'){
+				$('#basketball_opts_container').show();
+				$('#tennis_opts_container').hide();
+				$('#run_opts_container').hide();
+			}else if(sport_type =='TENNIS'){
+				$('#basketball_opts_container').hide();
+				$('#tennis_opts_container').show();
+				$('#run_opts_container').hide();
+			}else if(sport_type == 'RUN'){
+				$('#run_opts_container').show();
+				$('#basketball_opts_container').hide();
+				$('#tennis_opts_container').hide();
+			}
+			//把结果展示暂时隐藏
+			$('#result_container').hide();
+		});
+		//选项点击事件
+		$.each(SPORT,function(sport_type,value){
+			//循环装备类型
+			$.each(value,function(e_type,e_opts){
+				//循环装备类型的选项
+				$.each(e_opts,function(e_opt,v){
+					var _e_opt = e_opt;
+					if(sport_type == 'TENNIS'){
+						_e_opt = 'tr_' + e_opt;
+					}else if( sport_type == 'RUN'){
+						_e_opt = 'rs_' + e_opt;
+					}
+					$('input[name='+_e_opt+']').on('click',function(){
+						SPORT[sport_type][e_type][e_opt] = this.value;
+					});
+				});
+			})
+		});
+		//跑步类型中根据不同用法展示不同的选项
+		$('input[name=rs_run_type]').on('click',function(){
+			switch(this.value){
+				case 'MARATHON':
+				//马拉松
+					$('#rs_sex_weight_container').hide();
+					$('#tr_country_type_container').hide();
+					$('#dialy_container').hide();
+					break;
+				case 'RECOVER':
+				//恢复性
+					$('#rs_sex_weight_container').show();
+					$('#tr_country_type_container').hide();
+					$('#dialy_container').hide();
+					break;
+				case 'CROSS_COUNTRY':
+				//越野
+					$('#rs_sex_weight_container').hide();
+					$('#tr_country_type_container').show();
+					$('#dialy_container').hide();
+					break;
+				case 'FASHION':
+				//时尚
+					$('#rs_sex_weight_container').hide();
+					$('#tr_country_type_container').hide();
+					$('#dialy_container').hide();
+					break;
+				case 'DIALY':
+				//日常
+					$('#rs_sex_weight_container').show();
+					$('#tr_country_type_container').hide();
+					$('#dialy_container').show();
+					break;
+			}
+		});
+		//确定选装
+		$('#submit').click(function(){
+			$('#result_container').show();
+			var sport_type = $('input[name=sport_type]:checked').val();//运动类型
+			var equipment_type ='';//装备类型
+			if(sport_type =='BASKETBALL'){
+				equipment_type = $('input[name=equipment_type]:checked').val();
+			}else if( sport_type == 'TENNIS'){
+				equipment_type = $('input[name=tr_equipment_type]:checked').val();
+			}else if( sport_type == 'RUN'){
+				equipment_type =$('input[name=rs_equipment_type]:checked').val();
+			}
+			var options ={
+				'sport_type' : sport_type,
+				'equipment_type' : equipment_type
+				}
+			var  chooseEquipment = new AICE(options);
+			var result = chooseEquipment.init().AIChoose(EQUIPMENT[sport_type][equipment_type],SPORT[sport_type][equipment_type]);
+			
+			var dialog = new Dialogx({
+				'id':'result_container',
+				'container':[
+					'<div class="dialogx-header"> <span>匹配结果</span><span id="btn_close_dialog" class="btn-close">x</span></div>',
+					'<div class="dialogx-content">'+
+						'<div id="result_container">'+
+							'<section>'+
+								'<span class="title">精准匹配到<span id="total"  class="total-num">0</span>个装备</span>'+
+								'<div id="result_shose"></div>'+
+							'</section>'+
+							'<section id="similar_contianer">'+
+								'<span class="title">模糊匹配到<span id="similar_total"  class="total-num">0</span>个装备</span>'+
+								'<div id="similar_result_shose"></div>'+
+							'</section>'+
+						'</div>'+
+					'</div>',
+					'<div class="dialogx-footer">'+
+						'<span id="close_btn" class="submit-btn small">重新选装</span>'+
+					'</div>'
+				],
+				'onContainerInit':function(){
+					var that = this;
+					document.getElementById('btn_close_dialog')
+						.addEventListener('click', function(){
+							that.hide();
+						});
+					document.getElementById('close_btn')
+						.addEventListener('click', function(){
+							that.hide();
+						})
+				},
+				'onBeforeDialogOpen':function(){
+					// 精确匹配结果
+					$('#total').html(result.match_result.length);
+					var _htmlArr=[];
+					$.each(result.match_result,function(index,ele){
+						_htmlArr.push('<div class="result-container">');
+						_htmlArr.push('<img src="'+ele.image+'">'+
+													'<span>'+ele.name+'</span>');
+						_htmlArr.push('</div>');
+						
+					});
+					$('#result_shose').html(_htmlArr.join(''));
+					// 模糊匹配结果
+					if(result.similar_result.length >0){
+						$('#similar_total').html(result.similar_result.length);
+						var _htmlArr=[];
+						$.each(result.similar_result,function(index,ele){
+							_htmlArr.push('<div class="result-container">');
+							_htmlArr.push('<img src="'+ele.image+'">'+
+												'<span>'+ele.name+'</span>');
+							_htmlArr.push('</div>');
+						});
+						$('#similar_result_shose').html(_htmlArr.join(''));
+						$('#similar_contianer').show();
+					}else{
+						$('#similar_contianer').hide();
+					}
+				}
+			});
+			dialog.show();			
+		});
+	});
+	
+</script>
+</html>
