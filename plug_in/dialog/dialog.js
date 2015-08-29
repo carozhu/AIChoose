@@ -1,8 +1,9 @@
-;(function (window) {
-    Dialogx = function (opt) {
+define(function(require,exports,module){
+   var Dialogx = function (opt) {
         var that = this;
         that.options = {
             'id': opt.id || '',
+            'template_id':opt.template_id || '',
             'container': opt.container || [],
             //回调函数
             'onContainerInit': opt.onContainerInit || null,
@@ -25,6 +26,7 @@
             //生成div
             that.genDialogContainer();
             that.addHiddenEvent();
+            return that;
         },
         'genDialogContainer': function () {
             var that = this;
@@ -37,13 +39,22 @@
             dialogDom.innerHTML = _htmlArr.join('');
             dialogDom.className = 'dialog dialog--close';
             document.body.appendChild(dialogDom);
-            if (that.options.container.length > 0) {
-                var container = getChildNodeByClass('content_' + that.options.id, 'dialog__container');
+
+            var container = getChildNodeByClass('content_' + that.options.id, 'dialog__container');
+            if (that.options.container.length) {
+            //如果存在container，则使用container               
                 container.innerHTML = that.options.container.join('');
+            }else if(that.options.template_id.length){
+                //如果是使用模板,则加载模板里面的内容
+                var template = document.getElementById(that.options.template_id);
+                container.innerHTML = template.innerHTML;
+                //加载完毕后是否把改模板去掉？暂时先去掉
+                template.remove();
             }
             if (that.options.onContainerInit) {
                 that.options.onContainerInit.call(that)
             }
+            return that;
         },
         'addHiddenEvent': function () {
             var that = this;
@@ -51,6 +62,7 @@
             overlayDom.addEventListener('click', function () {
                 that.hide();
             });
+            return that;
         },
         'show': function () {
             var that = this;
@@ -62,6 +74,7 @@
             if (that.options.onAfterDialogOpen) {
                 that.options.onAfterDialogOpen.call(that)
             }
+            return that;
         },
         'hide': function () {
             var that = this;
@@ -73,6 +86,7 @@
             if (that.options.onAfterDialogClose) {
                 that.options.onAfterDialogClose.call(this)
             }
+            return that;
         },
         'destroy': function () {
             var that = this;
@@ -86,6 +100,7 @@
             if(that.options.onAfterDialogDestroy){
                 that.options.onAfterDialogDestroy.call(this);
             }
+            return that;
         }
     }
     /**
@@ -136,5 +151,6 @@
         dom.className = a.join(" ");
         return dom;
     }
+    module.exports = Dialogx;
+});
 
-}(window, undefined));
