@@ -1934,9 +1934,9 @@ define('_tennis_racket_info', function() {
 });
 
 define(function(require, exports, module) {
-	var basketball_shoes =require('_basketball_shoes_info');
+	var basketball_shoes = require('_basketball_shoes_info');
 	var run_shoes = require('_run_shoes_info'),
-	tennis_racket = require('_tennis_racket_info');
+		tennis_racket = require('_tennis_racket_info');
 
 	var EQUIPMENT = {
 		'BASKETBALL': {

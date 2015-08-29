@@ -48,8 +48,8 @@ define(function(require,exports,module){
                 //如果是使用模板,则加载模板里面的内容
                 var template = document.getElementById(that.options.template_id);
                 container.innerHTML = template.innerHTML;
-                //加载完毕后是否把改模板去掉？暂时先去掉
-                template.remove();
+                //加载完毕后是否把改模板去掉？暂时不去掉，因为假如使用了destroy后，再次运行则没有模板了
+                // template.remove();
             }
             if (that.options.onContainerInit) {
                 that.options.onContainerInit.call(that)

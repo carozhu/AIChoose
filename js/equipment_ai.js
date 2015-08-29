@@ -663,7 +663,7 @@ define('tennis_racket',['level'],function(require,exports,module){
 	}
 	module.exports = tennis_racket;
 });
-/**篮球鞋装备选装逻辑**/
+/**跑步鞋装备选装逻辑**/
 define('run_shose',['level'],function(require,exports,module){
 	var LEVEL = require('level');
 	function run_shose() {
@@ -946,6 +946,8 @@ define('run_shose',['level'],function(require,exports,module){
 					} else if (5 == xfactor_score) {
 						//鞋重轻量
 						tag_arr.push(LEVEL.HIGH);
+					}else{
+						tag_arr.push(LEVEL.LOW);
 					}
 					break;
 			}
