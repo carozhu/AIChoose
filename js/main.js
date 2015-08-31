@@ -209,9 +209,8 @@ define(function(require) {
         $('#basketball').click();
         //确定选装
         $('#submit').click(function() {
-            
-            require.async(['js/AIChoose.js','js/equipment.js'], function(AICE,EQUIPMENT) {
-            	var info = getSelectInfo(EQUIPMENT);
+            require.async(['js/AIChoose.js', 'js/equipment.js'], function(AICE, EQUIPMENT) {
+                var info = getSelectInfo(EQUIPMENT);
                 var chooseEquipment = new AICE(info.options); //初始化选装逻辑            
                 var result = chooseEquipment.init()
                     .AIChoose(info.equipment_info, info.select_items), //传入装备信息和选项
