@@ -161,7 +161,7 @@ define(function(require) {
                     $.each(result.match_result, function(index, ele) {
                         _htmlArr.push('<div class="result-container">');
                         _htmlArr.push('<img src="' + ele.image + '">' +
-                            '<span>' + ele.name + '</span>');
+                            '<div style="color:red;padding-bttom:10px;">'+ ele.brand +'</div><span>' + ele.name + '</span>');
                         _htmlArr.push('</div>');
 
                     });
@@ -173,7 +173,7 @@ define(function(require) {
                         $.each(result.similar_result, function(index, ele) {
                             _htmlArr.push('<div class="result-container">');
                             _htmlArr.push('<img src="' + ele.image + '">' +
-                                '<span>' + ele.name + '</span>');
+                                '<div style="color:red;padding-bttom:10px;">'+ ele.brand +'</div><span>' + ele.name + '</span>');
                             _htmlArr.push('</div>');
                         });
                         $('#similar_result_shose').html(_htmlArr.join(''));
