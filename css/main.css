@@ -67,7 +67,7 @@ section .title{
 /*匹配结果*/
 .result-container{
     display:inline-block;
-    width:50%;
+    width:10%;
     text-align:center
 }
 .result-container img{

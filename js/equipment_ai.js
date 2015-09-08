@@ -22,7 +22,7 @@ define('basketball_shose',['level'],function(require,exports,module){
 		var that = this;
 		that.options = {
 			//运动装备的影响因素
-			'factor_items': ['UPPER', 'HELL', 'FOREFOOT', 'DOOR'],
+			'factor_items': ['UPPER', 'HELL', 'FOREFOOT', 'DOOR', 'POSITION'],
 			//用户选项以及选项值
 			'select_items': {
 				'weight': ['WEIGHT_LOW', 'WEIGHT_MIDDLE', 'WEIGHT_HIGH'],
@@ -139,18 +139,22 @@ define('basketball_shose',['level'],function(require,exports,module){
 								case 'POSITION_S':
 									//后卫
 									_factorScore.UPPER += 10;
+									_factorScore.POSITION += 20;
 									break;
 								case 'POSITION_SF':
 									//小前锋
 									_factorScore.UPPER += 15;
+									_factorScore.POSITION += 50;
 									break;
 								case 'POSITION_PF':
 									//大前锋
 									_factorScore.UPPER += 25;
+									_factorScore.POSITION += 70;
 									break;
 								case 'POSITION_C':
 									//中锋
-									_factorScore.UPPER += 30;
+									_factorScore.UPPER += 35;
+									_factorScore.POSITION += 70;
 									break;
 							}
 							break;
@@ -237,8 +241,8 @@ define('basketball_shose',['level'],function(require,exports,module){
 								case 10:
 									//扣篮
 									_factorScore.UPPER += 40;
-									_factorScore.HELL += 50;
-									_factorScore.FOREFOOT += 50;
+									_factorScore.HELL += 45;
+									_factorScore.FOREFOOT += 25;
 									break;
 								case 11:
 									//远投
@@ -279,13 +283,15 @@ define('basketball_shose',['level'],function(require,exports,module){
 				upper_score = factor_item_score.UPPER, //鞋帮得分
 				hell_score = factor_item_score.HELL, //后跟缓震得分
 				forefoot_score = factor_item_score.FOREFOOT, //前掌回弹得分
-				door_score = factor_item_score.DOOR; //室内室外得分
+				door_score = factor_item_score.DOOR,//室内室外得分
+				position_score = factor_item_score.POSITION;//位置得分
+
 			//鞋帮标签计算方式
 			if (10 < upper_score && upper_score <= 40) {
 				tag_arr.push(LEVEL.LOW);
-			} else if (40 < upper_score && upper_score <= 60) {
+			} else if (40 < upper_score && upper_score <= 59) {
 				tag_arr.push(LEVEL.MIDDLE);
-			} else if (60 < upper_score && upper_score <= 80) {
+			} else if (59 < upper_score && upper_score <= 80) {
 				tag_arr.push(LEVEL.HIGH);
 			}
 
@@ -319,12 +325,22 @@ define('basketball_shose',['level'],function(require,exports,module){
 			} else if (door_score == 1) {
 				tag_arr.push(LEVEL.HIGH);
 			}
+			// 位置
+
+			if(position_score == 20){
+				tag_arr.push(LEVEL.LOW);
+			}else if(position_score == 50){
+				tag_arr.push(LEVEL.MIDDLE);
+			}else if(position_score == 70){
+				tag_arr.push(LEVEL.HIGH);
+			}
 			that.tag.tag_arr = tag_arr;
 
 			console.log('鞋帮得分：', upper_score,
 				'，后跟得分：', hell_score,
 				'，前掌得分：', forefoot_score,
-				'，室内室外：', door_score);
+				'，室内室外：', door_score,
+				', 位置得分：', position_score,tag_arr);
 			return that;
 		},
 		'_calculMatchTag': function() {
@@ -344,12 +360,12 @@ define('basketball_shose',['level'],function(require,exports,module){
 			if (_1_index < 5 || _2_index < 5) {
 				//当两者相等时，则有有两个标签（2，3或3，2）
 				if (_1_index == _2_index) {
-					similarTag.push(item_tag[0] + '' + LEVEL.A_Z[_1_index + 1] + '' + item_tag[2] + '' + item_tag[3]);
-					similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[_2_index + 1] + '' + item_tag[3]);
+					similarTag.push(item_tag[0] + '' + LEVEL.A_Z[_1_index + 1] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
+					similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[_2_index + 1] + '' + item_tag[3] + '' + item_tag[4]);
 				} else if (_1_index < _2_index) {
-					similarTag.push(item_tag[0] + '' + LEVEL.A_Z[_1_index + 1] + '' + item_tag[2] + '' + item_tag[3]);
+					similarTag.push(item_tag[0] + '' + LEVEL.A_Z[_1_index + 1] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
 				} else {
-					similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[_2_index + 1] + '' + item_tag[3]);
+					similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[_2_index + 1] + '' + item_tag[3] + '' + item_tag[4]);
 				}
 			}
 			that.tag.similarTag = similarTag;
@@ -401,8 +417,9 @@ define('basketball_shose',['level'],function(require,exports,module){
 			var tagArr = that.tag.tag_arr;
 			for(var i =0;i<tagArr.length;i++){
 				var level = _LEVEL[tagArr[i]]; 
-				var factor_item = that.options.factor_items[i];
-				that.slogan.shoseDesc.push(that.options.desc_shose[factor_item][level]);
+					var factor_item = that.options.factor_items[i];
+					if(that.options.desc_shose[factor_item] !== undefined)
+					that.slogan.shoseDesc.push(that.options.desc_shose[factor_item][level]);
 			}
 			that.slogan.shoseDesc.push(that.options.desc_shose.COMPLEX[skill_index]);
 			return that;

@@ -18,7 +18,7 @@ define(function(require, exports, module) {
         var that = this;
         that.options = {
             'sport_type': options.sport_type || 'BASKETBALL', //选择的运动类型
-            'equipment_type': options.equipment_type || 'SHOSE' //选择的装备类型		
+            'equipment_type': options.equipment_type || 'SHOSE' //选择的装备类型       
         }
 
     }
@@ -38,8 +38,30 @@ define(function(require, exports, module) {
             //根据选项计算标签
             var tag = that.equipment.calculTag(select_items).getTag();
             var match_result = [], //保存完全符合标签的鞋子
-			similar_result = []; //保存比该标签高一级的鞋子
-            //匹配鞋子
+            similar_result = []; //保存比该标签高一级的鞋子
+            //匹配篮球鞋
+            var priceTag=['E','C','A'];
+            //篮球鞋特殊的匹配方式
+            if(that.options.sport_type == 'BASKETBALL'){
+                for(var i = 0;i<priceTag.length;i++){
+                    var _p = priceTag[i];
+                    for(var j =0;j<shose.length;j++){
+                        var _shose = shose[j];
+                        console.log(tag.matchTag + _p)
+                        if(_shose.tag.trim() == (tag.matchTag+_p)){
+                            match_result.push(_shose);
+                        }
+                         //循环高一级的标签，把符合的鞋子放入。
+                    for (var k = 0; k < tag.similarTag.length; k++) {
+                        if (_shose.tag.trim() == (tag.similarTag[k]+_p)) {
+                            similar_result.push(_shose);
+                        }
+                    } //end for
+                    }
+                }
+                console.log('匹配标签',tag.matchTag)
+            }else{
+               //匹配鞋子
             for (var i = 0; i < shose.length; i++) {
                 var _shose = shose[i];
                 //完全匹配标签的鞋子
@@ -53,10 +75,13 @@ define(function(require, exports, module) {
                         }
                     } //end for
                 } //end if else
-            } //end for
+            } //end for 
+            }
+            
             return {
                 'match_result': match_result,
-                'similar_result': similar_result
+                'similar_result': similar_result,
+                'match_tag':tag.matchTag
             };
         },
         //获取描述

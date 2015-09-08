@@ -106,7 +106,23 @@ define(function(require) {
             }
         });
     }
-
+	function basketballTypeSelecteEvent(){
+		$('input[name=position]').on('click', function() {
+			switch(this.value){
+				case 'POSITION_S':
+				case 'POSITION_SF':
+					$('#s_sf_container').show();
+					$('#pf_c_container').hide();
+					break;
+				case 'POSITION_PF':
+				case 'POSITION_C':
+					$('#s_sf_container').hide();
+					$('#pf_c_container').show();
+					break;
+			}
+		});
+	}
+	
     function _selectEvent(sport_type, prefix) {
         //循环装备类型
         $.each(SPORT[sport_type], function(e_type, e_opts) {
@@ -129,6 +145,7 @@ define(function(require) {
         },
         'BASKETBALL': function() {
             _selectEvent('BASKETBALL', '');
+            basketballTypeSelecteEvent();
         }
     }
 
@@ -153,7 +170,12 @@ define(function(require) {
                     $('#slogan_desc').html(slogan.desc[0] + slogan.desc[2] + '的' + slogan.desc[1]);
                     $('#slogan_sent').html(slogan.sent);
                     $('#slogan_shoesDesc').html(slogan.shoseDesc.join(','));
-
+					if(result.match_result.length > 3){
+						result.match_result.length=3;
+					}
+					if(result.similar_result > 6){
+						result.similar_result =6;
+					}
                     // 精确匹配结果
                     $('#total').html(result.match_result.length);
 
