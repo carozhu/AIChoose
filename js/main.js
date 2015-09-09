@@ -130,8 +130,10 @@ define(function(require) {
 			var value = this.value;
 			if(value == 'UNKNOW'){
 				$('#tennis_racket_price').show();
+                $('input[name=tr_price]')[0].click();
 			}else{
 				$('#tennis_racket_price').hide();
+                SPORT['TENNIS']['RACKET']['price']='NONE';//价格恢复
 			}
 		})
 	}

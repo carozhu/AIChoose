@@ -59,7 +59,6 @@ define(function(require, exports, module) {
                     } //end for
                     }
                 }
-                console.log('匹配标签',tag.matchTag)
             }else{
                //匹配鞋子
             for (var i = 0; i < shose.length; i++) {

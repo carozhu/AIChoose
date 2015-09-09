@@ -14,6 +14,7 @@ define('level', function() {
 		'A_Z': 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' //用于算相似标签
 	}
 });
+
 /**篮球鞋选装逻辑**/
 define('basketball_shose', ['level'], function(require, exports, module) {
 	var LEVEL = require('level');
@@ -682,12 +683,10 @@ define('tennis_racket', ['level'], function(require, exports, module) {
 				tag_arr.push(LEVEL.LOW);
 			} else if (25 <= widgh_score && widgh_score <= 35) {
 				tag_arr.push(LEVEL.MIDDLE_LOW);
-			} else if (35 < widgh_score && widgh_score < 45) {
-				tag_arr.push(LEVEL.MIDDLE)
 			} else if (45 <= widgh_score && widgh_score <= 55) {
-				tag_arr.push(LEVEL.MIDDLE_HIGH);
+				tag_arr.push(LEVEL.MIDDLE);
 			} else if (55 < widgh_score && widgh_score <= 65) {
-				tag_arr.push(LEVEL.HIGH);
+				tag_arr.push(LEVEL.MIDDLE_HIGH);
 			} else {
 				tag_arr.push(LEVEL.NONE);
 			}
@@ -717,17 +716,14 @@ define('tennis_racket', ['level'], function(require, exports, module) {
 			//球拍类型
 			if(price_score != -1){
 				tag_arr.push(LEVEL.NONE);
-			}else if( -12<=racket_type_score && racket_type_score<=-8){
+			}else if( -12<=racket_type_score && racket_type_score<=-5){
 				tag_arr.push(LEVEL.LOW);
-			}else if(-7 <= racket_type_score && racket_type_score <=-3){
-				tag_arr.push(LEVEL.MIDDLE_LOW);
-			}else if(-2 <= racket_type_score && racket_type_score <=2){
+			}else if(-4 <= racket_type_score && racket_type_score <=4){
 				tag_arr.push(LEVEL.MIDDLE);
-			}else if(3 <= racket_type_score && racket_type_score <=7){
-				tag_arr.push(LEVEL.MIDDLE_HIGH);
-			}else if(8<= racket_type_score && racket_type_score <=12){
+			}else if(5 <= racket_type_score && racket_type_score <=12){
 				tag_arr.push(LEVEL.HIGH);
 			}
+			
 			//价格
 			if(price_score == -1){
 				tag_arr.push(LEVEL.NONE);
@@ -755,7 +751,30 @@ define('tennis_racket', ['level'], function(require, exports, module) {
 		//根据匹配的标签，计算出相似标签
 		'_calculSimilarTag': function() {
 			var that = this;
-			var similarTag = [];
+
+			var similarTag = [],
+				item_tag = that.tag.tag_arr;
+			//获取性能与该标签相似的标签，规则是根据重量与平衡点的标签补弱补强
+			var _1_index = LEVEL.A_Z.indexOf(item_tag[1]),
+				_2_index = LEVEL.A_Z.indexOf(item_tag[2]);
+			if(_1_index ==0 && _2_index ==0){
+				similarTag.push(item_tag[0] + '' + LEVEL.A_Z[1] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
+				similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[2]+ '' + item_tag[3] + '' + item_tag[4]);
+
+			}else if(_1_index == 3 && _2_index ==4){
+				similarTag.push(item_tag[0] + '' + LEVEL.A_Z[2] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
+				similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[3]+ '' + item_tag[3] + '' + item_tag[4]);
+			}else if(_1_index ==0 && _2_index ==4){
+				similarTag.push(item_tag[0] + '' + LEVEL.A_Z[1] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
+				similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[3]+ '' + item_tag[3] + '' + item_tag[4]);
+			}else if(_1_index ==3 && _2_index ==0){
+				similarTag.push(item_tag[0] + '' + LEVEL.A_Z[2] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
+				similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[1]+ '' + item_tag[3] + '' + item_tag[4]);
+			}else{
+				similarTag.push(item_tag[0] + '' + LEVEL.A_Z[_1_index+1] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
+				similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[_2_index+1]+ '' + item_tag[3] + '' + item_tag[4]);
+			}
+
 			that.tag.similarTag = similarTag;
 			return that;
 		},
