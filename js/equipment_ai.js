@@ -1,21 +1,21 @@
 /**匹配逻辑标签**/
-define('level',function(){
+define('level', function() {
 	return {
-		'SQUID_HIGH':'J',
-		'SQUID_MIDDLE_HIGH':'I',
-		'SQUID_MIDDLE':'H',
-		'SQUID_MIDDLE_LOW':'G',
-		'HIGH':'E',
-		'MIDDLE_HIGH' :'D',
-		'MIDDLE':'C',
-		'MIDDLE_LOW':'B',
-		'LOW':'A',
-		'NONE':'Z',
-		'A_Z':'ABCDEFGHIJKLMNOPQRSTUVWXYZ'//用于算相似标签
+		'SQUID_HIGH': 'J',
+		'SQUID_MIDDLE_HIGH': 'I',
+		'SQUID_MIDDLE': 'H',
+		'SQUID_MIDDLE_LOW': 'G',
+		'HIGH': 'E',
+		'MIDDLE_HIGH': 'D',
+		'MIDDLE': 'C',
+		'MIDDLE_LOW': 'B',
+		'LOW': 'A',
+		'NONE': 'Z',
+		'A_Z': 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' //用于算相似标签
 	}
 });
 /**篮球鞋选装逻辑**/
-define('basketball_shose',['level'],function(require,exports,module){
+define('basketball_shose', ['level'], function(require, exports, module) {
 	var LEVEL = require('level');
 	//篮球鞋装备
 	function basketball_shose() {
@@ -32,78 +32,78 @@ define('basketball_shose',['level'],function(require,exports,module){
 				'door': ['INDOOR', 'OUTDOOR']
 			},
 			//用户选项对应的个人描述
-			'desc_items':{
-				'weight':['轻量级','中量级','重量级'],
-				'position':['后卫','小前锋','大前锋','中锋'],
-				'tec':['速度型','技巧型','力量型'],
-				'skill':['你是球场上拿球机会最多的球员，是进攻组织者，让球在适合的时候出现在适合的地方是你的长项。',
-				'你运球技巧灵活，脚步快速，灵动潇洒，超越防守者切入篮下攻击篮筐是你的常态。',
-				'进攻时，你在快速移动中突然制动跳起投篮，杀得防守球员措手不及，尽显你那完美的协调性与爆发力。',
-				'你在受到贴身防守时强行旱地拔葱，利用身高和弹跳进行跳投得分，轻蔑一声“in your face”。',
-				'你身体壮硕 ，技术全面，在低位持球以各种华丽的技术进攻篮筐，赢得喝彩。',
-				'你是篮球场上的猎豹，敏捷而爆发力十足，抢夺在对手控制下的篮球，发动快速反击。',
-				'你在高大对手的防守下，避其锋芒，以四两拨千斤的勾手攻击篮筐，让防守者抓狂。',
-				'你在运球行进间突然改变移动方向，快速甩掉防守者或终结他的脚踝，你那华丽的技术让人赏心悦目。',
-				'你能敏锐的判断篮球落点，抢占有利位置，起跳抢球，控制球权，篮板抢得好，进攻机会多到手软。',
-				'你时刻都在合理抢占有利位置阻断进攻，没错你就是球场上的牛皮糖，粘在进攻者身上挣不脱甩不掉。',
-				'你那爆炸弹跳力，零距离接触篮筐的画面，给观众们带来的不止是震撼，没错你就是篮球场上的战斗机。',
-				'你有精准的投篮弧度，火热的投篮手感，神射手—种摧毁防守心理的存在，就是这么骄傲。',
-				'你能在防守紧迫时，利用快速出手，向上抛球，越过防守攻击篮筐，机敏而灵巧。'
+			'desc_items': {
+				'weight': ['轻量级', '中量级', '重量级'],
+				'position': ['后卫', '小前锋', '大前锋', '中锋'],
+				'tec': ['速度型', '技巧型', '力量型'],
+				'skill': ['你是球场上拿球机会最多的球员，是进攻组织者，让球在适合的时候出现在适合的地方是你的长项。',
+					'你运球技巧灵活，脚步快速，灵动潇洒，超越防守者切入篮下攻击篮筐是你的常态。',
+					'进攻时，你在快速移动中突然制动跳起投篮，杀得防守球员措手不及，尽显你那完美的协调性与爆发力。',
+					'你在受到贴身防守时强行旱地拔葱，利用身高和弹跳进行跳投得分，轻蔑一声“in your face”。',
+					'你身体壮硕 ，技术全面，在低位持球以各种华丽的技术进攻篮筐，赢得喝彩。',
+					'你是篮球场上的猎豹，敏捷而爆发力十足，抢夺在对手控制下的篮球，发动快速反击。',
+					'你在高大对手的防守下，避其锋芒，以四两拨千斤的勾手攻击篮筐，让防守者抓狂。',
+					'你在运球行进间突然改变移动方向，快速甩掉防守者或终结他的脚踝，你那华丽的技术让人赏心悦目。',
+					'你能敏锐的判断篮球落点，抢占有利位置，起跳抢球，控制球权，篮板抢得好，进攻机会多到手软。',
+					'你时刻都在合理抢占有利位置阻断进攻，没错你就是球场上的牛皮糖，粘在进攻者身上挣不脱甩不掉。',
+					'你那爆炸弹跳力，零距离接触篮筐的画面，给观众们带来的不止是震撼，没错你就是篮球场上的战斗机。',
+					'你有精准的投篮弧度，火热的投篮手感，神射手—种摧毁防守心理的存在，就是这么骄傲。',
+					'你能在防守紧迫时，利用快速出手，向上抛球，越过防守攻击篮筐，机敏而灵巧。'
 				],
-				'door':['','']
+				'door': ['', '']
 			},
 			//用户得出鞋子标签对应的鞋子描述
-			'desc_shose':{
-				'UPPER':{
-					'LOW':'低帮，十足的脚踝自由',
-					'MIDDLE':'中帮，兼具一定的保护性与灵活性',
-					'HIGH':'高帮，严实的脚踝保护'
-				},//鞋帮
-				'HELL':{
-					'LOW':'对膝盖的保护弱，适合体重小，弹跳少者使用',
-					'MIDDLE_LOW':'保护性一般，能吸收少量对膝盖的冲击力',
-					'MIDDLE':'缓冲性能较好，对膝盖有一定的保护性',
-					'MIDDLE_HIGH':'吸收大部分冲击力，较好的保护膝盖',
-					'HIGH':'跳起落地时几乎感觉不到对膝盖的冲击',
-				},//缓震
-				'FOREFOOT':{
-					'LOW':'反应速度缓慢，无回弹，适合跑动少者使用',
-					'MIDDLE_LOW':'反应速度一般，提供少量的回弹',
-					'MIDDLE':'反应速度较好，有一定的回弹能力',
-					'MIDDLE_HIGH':'反应快，回弹好，为启动与弹跳提供良好的助力',
-					'HIGH':'助你启速助你飞，反应灵敏，回弹十足'
+			'desc_shose': {
+				'UPPER': {
+					'LOW': '低帮，十足的脚踝自由',
+					'MIDDLE': '中帮，兼具一定的保护性与灵活性',
+					'HIGH': '高帮，严实的脚踝保护'
+				}, //鞋帮
+				'HELL': {
+					'LOW': '对膝盖的保护弱，适合体重小，弹跳少者使用',
+					'MIDDLE_LOW': '保护性一般，能吸收少量对膝盖的冲击力',
+					'MIDDLE': '缓冲性能较好，对膝盖有一定的保护性',
+					'MIDDLE_HIGH': '吸收大部分冲击力，较好的保护膝盖',
+					'HIGH': '跳起落地时几乎感觉不到对膝盖的冲击',
+				}, //缓震
+				'FOREFOOT': {
+					'LOW': '反应速度缓慢，无回弹，适合跑动少者使用',
+					'MIDDLE_LOW': '反应速度一般，提供少量的回弹',
+					'MIDDLE': '反应速度较好，有一定的回弹能力',
+					'MIDDLE_HIGH': '反应快，回弹好，为启动与弹跳提供良好的助力',
+					'HIGH': '助你启速助你飞，反应灵敏，回弹十足'
 				},
-				'DOOR':{
-					'LOW':'内场',
-					'HIGH':'外场'
+				'DOOR': {
+					'LOW': '内场',
+					'HIGH': '外场'
 				},
-				'COMPLEX':{
-					'0':'稳定与轻便',
-					'1':'稳定与快速',
-					'2':'稳定与弹性',
-					'3':'弹性十足',
-					'4':'保护与稳定',
-					'5':'反应迅捷',
-					'6':'强劲保护',
-					'7':'轻便与灵活',
-					'8':'强劲保护',
-					'9':'稳定与保护',
-					'10':'弹性与保护',
-					'11':'稳定',
-					'12':'保护与灵敏'
+				'COMPLEX': {
+					'0': '稳定与轻便',
+					'1': '稳定与快速',
+					'2': '稳定与弹性',
+					'3': '弹性十足',
+					'4': '保护与稳定',
+					'5': '反应迅捷',
+					'6': '强劲保护',
+					'7': '轻便与灵活',
+					'8': '强劲保护',
+					'9': '稳定与保护',
+					'10': '弹性与保护',
+					'11': '稳定',
+					'12': '保护与灵敏'
 				}
 			}
 		}
 		that.tag = {
-			'matchTag': '', //匹配的标签，只有一个
-			'similarTag': [], //相似的标签，可能有多个
-			'tag_arr': [], //匹配标签的数组形式，用于相似标签
-		}
-		//描述
-		that.slogan ={
-			'desc':[],
-			'sent':'',
-			'shoseDesc':[]
+				'matchTag': '', //匹配的标签，只有一个
+				'similarTag': [], //相似的标签，可能有多个
+				'tag_arr': [], //匹配标签的数组形式，用于相似标签
+			}
+			//描述
+		that.slogan = {
+			'desc': [],
+			'sent': '',
+			'shoseDesc': []
 		}
 	}
 	basketball_shose.prototype = {
@@ -283,8 +283,8 @@ define('basketball_shose',['level'],function(require,exports,module){
 				upper_score = factor_item_score.UPPER, //鞋帮得分
 				hell_score = factor_item_score.HELL, //后跟缓震得分
 				forefoot_score = factor_item_score.FOREFOOT, //前掌回弹得分
-				door_score = factor_item_score.DOOR,//室内室外得分
-				position_score = factor_item_score.POSITION;//位置得分
+				door_score = factor_item_score.DOOR, //室内室外得分
+				position_score = factor_item_score.POSITION; //位置得分
 
 			//鞋帮标签计算方式
 			if (10 < upper_score && upper_score <= 40) {
@@ -327,11 +327,11 @@ define('basketball_shose',['level'],function(require,exports,module){
 			}
 			// 位置
 
-			if(position_score == 20){
+			if (position_score == 20) {
 				tag_arr.push(LEVEL.LOW);
-			}else if(position_score == 50){
+			} else if (position_score == 50) {
 				tag_arr.push(LEVEL.MIDDLE);
-			}else if(position_score == 70){
+			} else if (position_score == 70) {
 				tag_arr.push(LEVEL.HIGH);
 			}
 			that.tag.tag_arr = tag_arr;
@@ -340,7 +340,7 @@ define('basketball_shose',['level'],function(require,exports,module){
 				'，后跟得分：', hell_score,
 				'，前掌得分：', forefoot_score,
 				'，室内室外：', door_score,
-				', 位置得分：', position_score,tag_arr);
+				', 位置得分：', position_score, tag_arr);
 			return that;
 		},
 		'_calculMatchTag': function() {
@@ -386,18 +386,18 @@ define('basketball_shose',['level'],function(require,exports,module){
 			return that.tag;
 		},
 		//匹配个人描述话术
-		'_matchPersonSlogan':function(select_items){
+		'_matchPersonSlogan': function(select_items) {
 			var that = this;
 			console.log(select_items)
-			for(var key in select_items){
-				if(select_items.hasOwnProperty(key)){
-					var val = select_items[key];//weight,position等
-					if(key !=='skill'){
+			for (var key in select_items) {
+				if (select_items.hasOwnProperty(key)) {
+					var val = select_items[key]; //weight,position等
+					if (key !== 'skill') {
 						//判断这个值在数组中的位置
 						var index = that.options.select_items[key].indexOf(val);
-						that.slogan.desc.push( that.options.desc_items[key][index]);
-					}else{
-						var index = that.options.select_items[key].indexOf(parseInt(val,10));
+						that.slogan.desc.push(that.options.desc_items[key][index]);
+					} else {
+						var index = that.options.select_items[key].indexOf(parseInt(val, 10));
 						that.slogan.sent = that.options.desc_items[key][index];
 					}
 				}
@@ -405,63 +405,68 @@ define('basketball_shose',['level'],function(require,exports,module){
 			return that;
 		},
 		//匹配鞋子描述话术
-		'_matchEquipmentSlogan':function(skill_index){
+		'_matchEquipmentSlogan': function(skill_index) {
 			var that = this;
 			//转换LEVEL
-			var _LEVEL ={};
-			for(var key in LEVEL){
-				if(LEVEL.hasOwnProperty(key)){
+			var _LEVEL = {};
+			for (var key in LEVEL) {
+				if (LEVEL.hasOwnProperty(key)) {
 					_LEVEL[LEVEL[key]] = key;
 				}
 			}
 			var tagArr = that.tag.tag_arr;
-			for(var i =0;i<tagArr.length;i++){
-				var level = _LEVEL[tagArr[i]]; 
-					var factor_item = that.options.factor_items[i];
-					if(that.options.desc_shose[factor_item] !== undefined)
+			for (var i = 0; i < tagArr.length; i++) {
+				var level = _LEVEL[tagArr[i]];
+				var factor_item = that.options.factor_items[i];
+				if (that.options.desc_shose[factor_item] !== undefined)
 					that.slogan.shoseDesc.push(that.options.desc_shose[factor_item][level]);
 			}
 			that.slogan.shoseDesc.push(that.options.desc_shose.COMPLEX[skill_index]);
 			return that;
 		},
 		//获取个人描述和鞋子描述话术
-		'getMatchSlogan':function(select_items){
+		'getMatchSlogan': function(select_items) {
 			var that = this;
 			that._matchPersonSlogan(select_items);
 			that._matchEquipmentSlogan(select_items.skill);
 			return that.slogan;
 		}
 	}
-	module.exports= basketball_shose;
+	module.exports = basketball_shose;
 });
 /**网球拍选装逻辑**/
-define('tennis_racket',['level'],function(require,exports,module){
+define('tennis_racket', ['level'], function(require, exports, module) {
 	var LEVEL = require('level');
+
 	function tennis_racket() {
 		var that = this;
 		that.options = {
-			//运动装备的影响因素（重量WIDGH、拍面大小RACKET、平衡点BALANCE、硬度HARDNESS）
-			'factor_items': ['WIDGH', 'RACKET', 'BALANCE', 'HARDNESS'],
+			//运动装备的影响因素（重量WIDGH、拍面科技RACKET、平衡点BALANCE、球拍类型RACKET_TYPE,价格：PRICE）
+			'factor_items': ['WIDGH', 'RACKET', 'BALANCE', 'RACKET_TYPE','PRICE'],
 			//用户选项以及选项值
 			'select_items': {
 				'sex': ['MALE', 'FEMALE'], //性别：男女
 				'weight': ['LIGHT', 'GENERAL', 'HEAVY'], //体重：低中高
-				'level': ['LOW', 'MIDDLE', 'HIGH'], //水平：低中高
-				'area': ['BASELINE', 'AREA_ALL', 'NET'], //控制区域：底线型、综合性、上网型
-				'strength': ['BORROW', 'ALL', 'INITA'], //发力：接力型、综合型、主动发力型
-				'style': ['CONTROL', 'PROWER', 'COMPLEX'] //风格偏好：控制性、力量型、综合型
+				'level': ['LOW', 'MIDDLE', 'HIGH', 'UNKNOW'], //水平：低中高
+				'battle_type': ['FLAT', 'ROTATE', 'ACCURATE', 'UNKNOW'], //击球类型：暴力平击、强烈旋转、精确落点、不清楚
+				'style': ['ATTACK', 'DEFEND', 'ALL','UNKNOW'], //风格偏好：崇尚进攻、坚固防守、攻守兼备、不清楚
+				'strength': ['BORROW', 'INITA', 'UNKNOW'], //发力类型：借力型、主动发力型、不清楚
+				'backhand':['SINGLE','DOUBLE'],//反手类型：单手反拍、双手反拍
+				'skill':[0,1,2,3,4,5,6],//撒手锏：借力打力、网前截杀、重炮发球、放小球、超级上旋、月亮球、不清楚
+				'price':['LOW','MIDDLE','HIGH']//价格：高中低
 			}
 		}
+
 		that.tag = {
-			'matchTag': '', //匹配的标签，只有一个
-			'similarTag': [], //相似的标签，可能有多个
-			'tag_arr': [], //匹配标签的数组形式，用于相似标签
-		}
-		//描述
-		that.slogan ={
-			'desc':[],
-			'sent':'',
-			'shoseDesc':[]
+				'matchTag': '', //匹配的标签，只有一个
+				'similarTag': [], //相似的标签，可能有多个
+				'tag_arr': [], //匹配标签的数组形式，用于相似标签
+			}
+			//描述
+		that.slogan = {
+			'desc': [],
+			'sent': '',
+			'shoseDesc': []
 		}
 	}
 	tennis_racket.prototype = {
@@ -512,34 +517,39 @@ define('tennis_racket',['level'],function(require,exports,module){
 								case 'LOW':
 									//初学
 									_factorScore.WIDGH += 10;
-									_factorScore.RACKET += 10;
 									break;
 								case 'MIDDLE':
 									//进阶
 									_factorScore.WIDGH += 20;
-									_factorScore.RACKET += 20;
 									break;
 								case 'HIGH':
 									//高级
 									_factorScore.WIDGH += 30;
-									_factorScore.RACKET += 30;
+									break;
+								case 'UNKNOW':
+									//不清楚
+									_factorScore.WIDGH += 10;
 									break;
 							}
 							break;
-						case 'area':
-							//控制区域分类
+						case 'battle_type':
+							//击球类型
 							switch (value) {
-								case 'BASELINE':
-									//底线型
-									_factorScore.BALANCE += 10;
+								case 'FLAT':
+									//暴力平击
+									_factorScore.RACKET += 5;
 									break;
-								case 'AREA_ALL':
-									//综合型
-									_factorScore.BALANCE += 0;
+								case 'ROTATE':
+									//强烈旋转
+									_factorScore.RACKET += 0;
 									break;
-								case 'NET':
-									//上网型
-									_factorScore.BALANCE -= 10;
+								case 'ACCURATE':
+									//精确落点
+									_factorScore.RACKET -= 5;
+									break;
+								case 'UNKNOW':
+									//不清楚
+									_factorScore.RACKET -= 5;
 									break;
 							}
 							break;
@@ -548,32 +558,99 @@ define('tennis_racket',['level'],function(require,exports,module){
 							switch (value) {
 								case 'BORROW':
 									//借力型
-									_factorScore.BALANCE += 15;
-									break;
-								case 'ALL':
-									//综合型
-									_factorScore.BALANCE += 0;
+									_factorScore.BALANCE += 1;
 									break;
 								case 'INITA':
 									//主动发力型
-									_factorScore.BALANCE -= 15;
+									_factorScore.BALANCE -= 1;
+									break;
+								case 'UNKNOW':
+									//不清楚
+									_factorScore.BALANCE += 0;
 									break;
 							}
 							break;
 						case 'style':
-							//风格偏好
+							//风格
 							switch (value) {
-								case 'CONTROL':
-									//控制型
-									_factorScore.HARDNESS += 0;
+								case 'ATTACK':
+									//崇尚进攻
+									_factorScore.RACKET_TYPE += 5;
 									break;
-								case 'PROWER':
-									//力量型
-									_factorScore.HARDNESS += 20;
+								case 'DEFEND':
+									//坚固防守
+									_factorScore.RACKET_TYPE -= 5;
 									break;
-								case 'COMPLEX':
-									//综合型
-									_factorScore.HARDNESS += 10;
+								case 'ALL':
+									//攻守兼备
+									_factorScore.RACKET_TYPE += 0;
+									break;
+								case 'UNKONW':
+									//不清楚
+									_factorScore.RACKET_TYPE -= 5;
+									break;
+							}
+							break;
+						//反手类型
+						case 'backhand':
+							switch(value){
+								case 'SINGLE':
+								//单手反拍
+									_factorScore.BALANCE += 2;
+									break;
+								case 'DOUBLE':
+								//双手反拍
+									_factorScore.BALANCE += 0;
+									break;
+							}
+							break;
+						//技能
+						case 'skill':
+							switch(parseInt(value,10)){
+								case 0:
+									//借力打力
+									_factorScore.RACKET_TYPE -= 0;
+									break;
+								case 1:
+									//网前截杀
+									_factorScore.RACKET_TYPE -= 0;
+									break;
+								case 2:
+									//重炮发球
+									_factorScore.RACKET_TYPE += 1;
+									break;
+								case 3:
+									//放小球
+									_factorScore.RACKET_TYPE -= 1;
+									break;
+								case 4:
+									//超级上旋
+									_factorScore.RACKET_TYPE += 1;
+									break;
+								case 5:
+									//月亮球
+									_factorScore.RACKET_TYPE -= 1;
+									break;
+								case 6:
+									//不清楚
+									_factorScore.RACKET_TYPE -= 0;
+									break;
+							}
+							break;
+						//价格
+						case 'price':
+							switch(value){
+								case 'LOW':
+									_factorScore.PRICE += 1;
+									break;
+								case 'MIDDLE':
+									_factorScore.PRICE += 2;
+									break;
+								case 'HIGH':
+									_factorScore.PRICE += 3;
+									break;
+								default:
+									_factorScore.PRICE -= 1;
 									break;
 							}
 							break;
@@ -588,9 +665,18 @@ define('tennis_racket',['level'],function(require,exports,module){
 			var factor_item_score = that._calculFactorScore(select_items);
 			var tag_arr = [], //用于存储选装结果标签
 				widgh_score = factor_item_score.WIDGH, //重量得分
-				racket_score = factor_item_score.RACKET, //牌面大小得分
+				racket_score = factor_item_score.RACKET, //拍面科技得分
 				balance_score = factor_item_score.BALANCE, //平衡点得分
-				hardness_score = factor_item_score.HARDNESS; //硬度得分
+				racket_type_score = factor_item_score.RACKET_TYPE, //拍面类型得分
+				price_score = factor_item_score.PRICE;//价格得分
+			//计算新手/高手
+			if(price_score == -1){
+				//专业
+				tag_arr.push(LEVEL.MIDDLE_LOW);
+			}else{
+				//新手
+				tag_arr.push(LEVEL.LOW)
+			}
 			//计算重量
 			if (15 <= widgh_score && widgh_score < 25) {
 				tag_arr.push(LEVEL.LOW);
@@ -606,42 +692,57 @@ define('tennis_racket',['level'],function(require,exports,module){
 				tag_arr.push(LEVEL.NONE);
 			}
 
-			//计算拍面大小
-			if (racket_score == 10) {
-				tag_arr.push(LEVEL.LOW);
-			} else if (racket_score == 20) {
-				tag_arr.push(LEVEL.MIDDLE);
-			} else if (racket_score == 30) {
-				tag_arr.push(LEVEL.HIGH);
-			} else {
-				tag_arr.push(LEVEL.NONE);
-			}
+			// //计算拍面科技
+			// if (racket_score == -5) {
+			// 	tag_arr.push(LEVEL.LOW);
+			// } else if (racket_score == 0) {
+			// 	tag_arr.push(LEVEL.MIDDLE);
+			// } else if (racket_score == 5) {
+			// 	tag_arr.push(LEVEL.HIGH);
+			// } else {
+			// 	tag_arr.push(LEVEL.NONE);
+			// }
 
 			//计算平衡性
-			if (-10 <= balance_score && balance_score < -5) {
+			if (-1 <= balance_score && balance_score < 0) {
 				tag_arr.push(LEVEL.LOW);
-			} else if (-5 <= balance_score && balance_score <= 5) {
+			} else if (0 <= balance_score && balance_score <= 1) {
 				tag_arr.push(LEVEL.MIDDLE);
-			} else if (5 < balance_score && balance_score <= 10) {
+			} else if (2 <= balance_score && balance_score <= 3) {
 				tag_arr.push(LEVEL.HIGH);
 			} else {
 				tag_arr.push(LEVEL.NONE);
 			}
 
-			//计算硬度
-			if (hardness_score == 0) {
-				tag_arr.push(LEVEL.LOW);
-			} else if (hardness_score == 10) {
-				tag_arr.push(LEVEL.MIDDLE);
-			} else if (hardness_score == 20) {
-				tag_arr.push(LEVEL.HIGH);
-			} else {
+			//球拍类型
+			if(price_score != -1){
 				tag_arr.push(LEVEL.NONE);
+			}else if( -12<=racket_type_score && racket_type_score<=-8){
+				tag_arr.push(LEVEL.LOW);
+			}else if(-7 <= racket_type_score && racket_type_score <=-3){
+				tag_arr.push(LEVEL.MIDDLE_LOW);
+			}else if(-2 <= racket_type_score && racket_type_score <=2){
+				tag_arr.push(LEVEL.MIDDLE);
+			}else if(3 <= racket_type_score && racket_type_score <=7){
+				tag_arr.push(LEVEL.MIDDLE_HIGH);
+			}else if(8<= racket_type_score && racket_type_score <=12){
+				tag_arr.push(LEVEL.HIGH);
 			}
+			//价格
+			if(price_score == -1){
+				tag_arr.push(LEVEL.NONE);
+			}else if( price_score == 1){
+				tag_arr.push(LEVEL.LOW);
+			}else if(price_score == 2){
+				tag_arr.push(LEVEL.MIDDLE);
+			}else if(price_score == 3){
+				tag_arr.push(LEVEL.HIGH);
+			}
+
 			console.log('重量得分：', widgh_score,
-				'，牌面大小得分：', racket_score,
+				'，牌面科技得分：', racket_score,
 				'，平衡点得分：', balance_score,
-				'，硬度得分：', hardness_score);
+				'，球拍类型得分：', racket_type_score);
 
 			that.tag.tag_arr = tag_arr;
 			return that;
@@ -673,7 +774,7 @@ define('tennis_racket',['level'],function(require,exports,module){
 			return that.tag;
 		},
 		//获取描述话术
-		'getMatchSlogan':function(select_items){
+		'getMatchSlogan': function(select_items) {
 			var that = this;
 			return that.slogan;
 		}
@@ -681,8 +782,9 @@ define('tennis_racket',['level'],function(require,exports,module){
 	module.exports = tennis_racket;
 });
 /**跑步鞋装备选装逻辑**/
-define('run_shose',['level'],function(require,exports,module){
+define('run_shose', ['level'], function(require, exports, module) {
 	var LEVEL = require('level');
+
 	function run_shose() {
 		var that = this;
 		that.options = {
@@ -703,15 +805,15 @@ define('run_shose',['level'],function(require,exports,module){
 			}
 		}
 		that.tag = {
-			'matchTag': '', //匹配的标签，只有一个
-			'similarTag': [], //相似的标签，可能有多个
-			'tag_arr': [], //匹配标签的数组形式，用于相似标签
-		}
-		//描述
-		that.slogan ={
-			'desc':[],
-			'sent':'',
-			'shoseDesc':[]
+				'matchTag': '', //匹配的标签，只有一个
+				'similarTag': [], //相似的标签，可能有多个
+				'tag_arr': [], //匹配标签的数组形式，用于相似标签
+			}
+			//描述
+		that.slogan = {
+			'desc': [],
+			'sent': '',
+			'shoseDesc': []
 		}
 	}
 	run_shose.prototype = {
@@ -963,7 +1065,7 @@ define('run_shose',['level'],function(require,exports,module){
 					} else if (5 == xfactor_score) {
 						//鞋重轻量
 						tag_arr.push(LEVEL.HIGH);
-					}else{
+					} else {
 						tag_arr.push(LEVEL.LOW);
 					}
 					break;
@@ -1003,7 +1105,7 @@ define('run_shose',['level'],function(require,exports,module){
 			return that.tag;
 		},
 		//获取描述话术
-		'getMatchSlogan':function(select_items){
+		'getMatchSlogan': function(select_items) {
 			var that = this;
 			return that.slogan;
 		}
@@ -1012,9 +1114,9 @@ define('run_shose',['level'],function(require,exports,module){
 });
 /**选装逻辑**/
 define(function(require, exports, module) {
-	var basketball_shose = require('basketball_shose');//篮球鞋
-	var tennis_racket = require('tennis_racket');//网球拍装备
-	var run_shose = require('run_shose');//篮球鞋装备
+	var basketball_shose = require('basketball_shose'); //篮球鞋
+	var tennis_racket = require('tennis_racket'); //网球拍装备
+	var run_shose = require('run_shose'); //篮球鞋装备
 	module.exports = {
 		'BASKETBALL': {
 			'SHOSE': basketball_shose

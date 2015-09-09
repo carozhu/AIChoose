@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
-
 	<head>
 		<title>智能选装</title>
 		<meta charset="utf-8">
@@ -69,7 +68,6 @@
 		</div>
 		<!-- 底部 -->
 		<footer id="footer" class="">
-
 		</footer>
 		<!-- 对话框模板 -->
 		<script type="text/x-template" id="result_dialog_container">
@@ -151,7 +149,6 @@
 					<label for="skill_2">急停跳投</label>
 					<input class="input_radio" type="radio" value="3" id="skill_3" name="skill">
 					<label for="skill_3">干拔</label>
-
 					<input class="input_radio" type="radio" value="5" id="skill_5" name="skill">
 					<label for="skill_5">抢断</label>
 					<input class="input_radio" type="radio" value="7" id="skill_7" name="skill">
@@ -173,7 +170,6 @@
 				</div>
 				<input class="input_radio" type="radio" value="11" id="skill_11" name="skill">
 				<label for="skill_11">远投</label>
-
 			</section>
 			<!-- 选择技术类型 -->
 			<section>
@@ -242,42 +238,90 @@
 					<label for="tr_middle">中</label>
 					<input type="radio" name="tr_level" value="HIGH" class="input_radio" id="tr_high" />
 					<label for="tr_high">高</label>
+					<input type="radio" name="tr_level" value="UNKNOW" class="input_radio" id="tr_level_unknow" />
+					<label for="tr_level_unknow">不清楚</label>
 				</div>
 			</section>
-			<!-- 选择控制区域 -->
+			<!-- 选择风格偏好 -->
 			<section>
-				<span class="title">选择控制区域</span>
+				<span class="title">选择风格偏好</span>
 				<div>
-					<input type="radio" name="tr_area" value="BASELINE" class="input_radio" id="tr_baseline" />
-					<label for="tr_baseline">底线型</label>
-					<input type="radio" name="tr_area" value="AREA_ALL" class="input_radio" id="tr_area_all" checked/>
-					<label for="tr_area_all">综合型</label>
-					<input type="radio" name="tr_area" value="NET" class="input_radio" id="tr_net" />
-					<label for="tr_net">上网型</label>
+					<input type="radio" name="tr_style" value="ATTACK" class="input_radio" id="tr_attack" checked/>
+					<label for="tr_attack">崇尚进攻</label>
+					<input type="radio" name="tr_style" value="DEFEND" class="input_radio" id="tr_defend" />
+					<label for="tr_defend">坚固防守</label>
+					<input type="radio" name="tr_style" value="ALL" class="input_radio" id="tr_all" />
+					<label for="tr_all">攻守兼备</label>
+					<input type="radio" name="tr_style" value="UNKNOW" class="input_radio" id="tr_style_all" />
+					<label for="tr_style_all">不清楚</label>
 				</div>
 			</section>
 			<!-- 选择发力-->
 			<section>
 				<span class="title">选择发力类型</span>
 				<div>
-					<input type="radio" name="tr_strength" value="BORROW" class="input_radio" id="tr_borrow" />
-					<label for="tr_borrow">接力型</label>
-					<input type="radio" name="tr_strength" value="ALL" class="input_radio" id="tr_all" checked/>
-					<label for="tr_all">综合型</label>
+					<input type="radio" name="tr_strength" value="BORROW" class="input_radio" id="tr_borrow" checked/>
+					<label for="tr_borrow">借力型</label>
 					<input type="radio" name="tr_strength" value="INITA" class="input_radio" id="tr_inita" />
 					<label for="tr_inita">主动发力型</label>
+					<input type="radio" name="tr_strength" value="UNKNOW" class="input_radio" id="tr_strength_unknow" />
+					<label for="tr_strength_unknow">不清楚</label>
 				</div>
 			</section>
-			<!-- 选择打球风格-->
+			<!-- 选择击球类型-->
 			<section>
-				<span class="title">选择打球风格</span>
+				<span class="title">选择击球类型</span>
 				<div>
-					<input type="radio" name="tr_style" value="CONTROL" class="input_radio" id="tr_control" checked/>
-					<label for="tr_control">控制型</label>
-					<input type="radio" name="tr_style" value="PROWER" class="input_radio" id="tr_prower" />
-					<label for="tr_prower">力量型</label>
-					<input type="radio" name="tr_style" value="COMPLEX" class="input_radio" id="tr_complex" />
-					<label for="tr_complex">综合型</label>
+					<input type="radio" name="tr_battle_type" value="FLAT" class="input_radio" id="tr_flat" checked/>
+					<label for="tr_flat">暴力平击</label>
+					<input type="radio" name="tr_battle_type" value="ROTATE" class="input_radio" id="tr_rotate" />
+					<label for="tr_rotate">强烈旋转</label>
+					<input type="radio" name="tr_battle_type" value="ACCURATE" class="input_radio" id="tr_accurate" />
+					<label for="tr_accurate">精确落点</label>
+					<input type="radio" name="tr_battle_type" value="UNKNOW" class="input_radio" id="tr_battle_type_unknow" />
+					<label for="tr_battle_type_unknow">不清楚</label>
+				</div>
+			</section>
+			<!-- 选择反手类型-->
+			<section>
+				<span class="title">选择反手类型</span>
+				<div>
+					<input type="radio" name="tr_backhand" value="SINGLE" class="input_radio" id="tr_single" checked/>
+					<label for="tr_single">单手反拍</label>
+					<input type="radio" name="tr_backhand" value="DOUBLE" class="input_radio" id="tr_double" />
+					<label for="tr_double">双手反拍</label>
+				</div>
+			</section>
+			<!-- 选择撒手锏-->
+			<section>
+				<span class="title">选择撒手锏</span>
+				<div>
+					<input type="radio" name="tr_skill" value="0" class="input_radio" id="tr_0" checked/>
+					<label for="tr_0">借力打力</label>
+					<input type="radio" name="tr_skill" value="1" class="input_radio" id="tr_1" />
+					<label for="tr_1">网前截杀</label>
+					<input type="radio" name="tr_skill" value="2" class="input_radio" id="tr_2" />
+					<label for="tr_2">重炮发球</label>
+					<input type="radio" name="tr_skill" value="3" class="input_radio" id="tr_3" />
+					<label for="tr_3">放小球</label>
+					<input type="radio" name="tr_skill" value="4" class="input_radio" id="tr_4" />
+					<label for="tr_4">超级上旋</label>
+					<input type="radio" name="tr_skill" value="5" class="input_radio" id="tr_5" />
+					<label for="tr_5">月亮球</label>
+					<input type="radio" name="tr_skill" value="6" class="input_radio" id="tr_6" />
+					<label for="tr_6">不清楚</label>
+				</div>
+			</section>
+			<!-- 价格-->
+			<section id="tennis_racket_price" style="display: none;">
+				<span class="title">价位</span>
+				<div>
+					<input type="radio" name="tr_price" value="LOW" class="input_radio" id="tr_price_low"/>
+					<label for="tr_price_low">300以内</label>
+					<input type="radio" name="tr_price" value="MIDDLE" class="input_radio" id="tr_price_middle" />
+					<label for="tr_price_middle">300——500</label>
+					<input type="radio" name="tr_price" value="HIGH" class="input_radio" id="tr_price_hight" />
+					<label for="tr_price_hight">500以上</label>
 				</div>
 			</section>
 		</script>
@@ -389,18 +433,18 @@
 	<script src="plug_in/seajs/2.2.0/sea.js"></script>
 	<script>
 		seajs.config({
-			//基础路径
-			"base": '../AIChoose/',
-			//设置别名
-			"alias": {
-				"jquery": "plug_in/jquery/1.10.1/jquery-debug.js",
-				"dialog": "plug_in/dialog/dialog.js"
-			},
-			//调试模式
-			'debug': true
-		});
-		seajs.use("js/main.js");
-		 //			seajs.use('test.js');
+				//基础路径
+				"base": '../AIChoose/',
+				//设置别名
+				"alias": {
+					"jquery": "plug_in/jquery/1.10.1/jquery-debug.js",
+					"dialog": "plug_in/dialog/dialog.js"
+				},
+				//调试模式
+				'debug': true
+			});
+			seajs.use("js/main.js");
+																								//			seajs.use('test.js');
 	</script>
 
 </html>

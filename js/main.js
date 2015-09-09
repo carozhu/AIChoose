@@ -16,9 +16,12 @@ define(function(require) {
                 'sex': 'MALE',
                 'weight': 'GENERAL',
                 'level': 'MIDDLE',
-                'area': 'AREA_ALL',
-                'strength': 'ALL',
-                'style': 'CONTROL'
+                'battle_type': 'FLAT',
+                'strength': 'BORROW',
+                'style': 'ATTACK',
+                'backhand':'SINGLE',
+                'skill':0,
+                'price':'NONE'
             }
         },
         'RUN': {
@@ -122,7 +125,16 @@ define(function(require) {
 			}
 		});
 	}
-	
+	function tennisTypeSelectEvent(){
+		$('input[name=tr_level]').on('click',function(){
+			var value = this.value;
+			if(value == 'UNKNOW'){
+				$('#tennis_racket_price').show();
+			}else{
+				$('#tennis_racket_price').hide();
+			}
+		})
+	}
     function _selectEvent(sport_type, prefix) {
         //循环装备类型
         $.each(SPORT[sport_type], function(e_type, e_opts) {
@@ -142,6 +154,7 @@ define(function(require) {
         },
         'TENNIS': function() {
             _selectEvent('TENNIS', 'tr_');
+            tennisTypeSelectEvent();
         },
         'BASKETBALL': function() {
             _selectEvent('BASKETBALL', '');
