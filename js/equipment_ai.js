@@ -538,19 +538,19 @@ define('tennis_racket', ['level'], function(require, exports, module) {
 							switch (value) {
 								case 'FLAT':
 									//暴力平击
-									_factorScore.RACKET += 5;
+									_factorScore.RACKET_TYPE += 5;
 									break;
 								case 'ROTATE':
 									//强烈旋转
-									_factorScore.RACKET += 0;
+									_factorScore.RACKET_TYPE += 0;
 									break;
 								case 'ACCURATE':
 									//精确落点
-									_factorScore.RACKET -= 5;
+									_factorScore.RACKET_TYPE -= 5;
 									break;
 								case 'UNKNOW':
 									//不清楚
-									_factorScore.RACKET -= 5;
+									_factorScore.RACKET_TYPE -= 5;
 									break;
 							}
 							break;
@@ -757,24 +757,23 @@ define('tennis_racket', ['level'], function(require, exports, module) {
 			//获取性能与该标签相似的标签，规则是根据重量与平衡点的标签补弱补强
 			var _1_index = LEVEL.A_Z.indexOf(item_tag[1]),
 				_2_index = LEVEL.A_Z.indexOf(item_tag[2]);
-			if(_1_index ==0 && _2_index ==0){
-				similarTag.push(item_tag[0] + '' + LEVEL.A_Z[1] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
-				similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[2]+ '' + item_tag[3] + '' + item_tag[4]);
-
-			}else if(_1_index == 3 && _2_index ==4){
-				similarTag.push(item_tag[0] + '' + LEVEL.A_Z[2] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
-				similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[3]+ '' + item_tag[3] + '' + item_tag[4]);
-			}else if(_1_index ==0 && _2_index ==4){
-				similarTag.push(item_tag[0] + '' + LEVEL.A_Z[1] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
-				similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[3]+ '' + item_tag[3] + '' + item_tag[4]);
-			}else if(_1_index ==3 && _2_index ==0){
-				similarTag.push(item_tag[0] + '' + LEVEL.A_Z[2] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
-				similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[1]+ '' + item_tag[3] + '' + item_tag[4]);
-			}else{
-				similarTag.push(item_tag[0] + '' + LEVEL.A_Z[_1_index+1] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
-				similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[_2_index+1]+ '' + item_tag[3] + '' + item_tag[4]);
+			var _1_ =0,_2_=2;
+			
+			if(_1_index ==0){
+				_1_ = 1;
+			}else if(_1_index == 3 ){
+				_1_ =2;
+			else{
+				_1_ = _1_index+1;
 			}
-
+			
+			if( _2_index ==4 || _2_index == 0){
+				_2_ = 2;
+			}else{			
+				_2_ = _2_index+2;
+			}
+			similarTag.push(item_tag[0] + '' + LEVEL.A_Z[_1_] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
+			similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[_2_]+ '' + item_tag[3] + '' + item_tag[4]);
 			that.tag.similarTag = similarTag;
 			return that;
 		},
