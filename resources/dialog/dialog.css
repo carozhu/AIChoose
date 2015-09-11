@@ -9,6 +9,7 @@
 
 .dialog {
     position: fixed;
+    display: block;
     display: -webkit-flex;
     display: flex;
     -webkit-align-items: center;
@@ -16,7 +17,7 @@
     -webkit-justify-content: center;
     justify-content: center;
     pointer-events: none;
-    z-index: 99;
+    z-index: 999;
 }
 
 .dialog__overlay {
@@ -38,7 +39,11 @@
     display: inline-block;
 }
 .dialog__content {
+    position: relative;
+    margin: auto;
     width: 90%;
+    max-height: 80%;
+    overflow-y: auto; 
     background: #fff;
     text-align: center;
     position: relative;
@@ -212,7 +217,7 @@
 .dialogx-content{
     text-align: left;
     /*margin: 10px 0;*/
-    max-height: 400px;
+    /*max-height: 400px;*/
     overflow: auto;
 }
 .dialogx-footer{

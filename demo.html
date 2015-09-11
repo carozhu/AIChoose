@@ -37,7 +37,7 @@
 		<link rel="shortcut icon" type="image/ico" href="" />
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/main.css" />
-		<link rel="stylesheet" type="text/css" href="plug_in/dialog/dialog.css" />
+		<link rel="stylesheet" type="text/css" href="resources/dialog/dialog.css" />
 	</head>
 
 	<body>
@@ -297,7 +297,7 @@
 				<span class="title">选择撒手锏</span>
 				<div>
 					<input type="radio" name="tr_skill" value="0" class="input_radio" id="tr_0" checked/>
-					<label for="tr_0">借力打力</label>
+					<label for="tr_0">大角度调动</label>
 					<input type="radio" name="tr_skill" value="1" class="input_radio" id="tr_1" />
 					<label for="tr_1">网前截杀</label>
 					<input type="radio" name="tr_skill" value="2" class="input_radio" id="tr_2" />
@@ -429,22 +429,28 @@
 					</div>
 				</section>
 		</script>
+		<div class="charector-wrap " id="js_wrap">
+	<div class="charector"></div>
+</div>
 	</body>
-	<script src="plug_in/seajs/2.2.0/sea.js"></script>
+	
+	<script src="resources/seajs/2.2.0/sea.js"></script>
 	<script>
 		seajs.config({
 				//基础路径
 				"base": '../AIChoose/',
 				//设置别名
 				"alias": {
-					"jquery": "plug_in/jquery/1.10.1/jquery-debug.js",
-					"dialog": "plug_in/dialog/dialog.js"
+					"jquery": "resources/jquery/1.10.1/jquery.js",
+					"dialog": "resources/dialog/dialog.js",
+					'LocalS':'resources/localstorage/localStorage.js'
+
 				},
 				//调试模式
 				'debug': true
 			});
 			seajs.use("js/main.js");
-																								//			seajs.use('test.js');
+			// seajs.use('test.js');
 	</script>
 
 </html>

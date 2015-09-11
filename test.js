@@ -1,10 +1,18 @@
 define(function(require, exports, module) {
-	var weight = ['WEIGHT_LOW', 'WEIGHT_MIDDLE', 'WEIGHT_HIGH'],
-		position= ['POSITION_S', 'POSITION_SF', 'POSITION_PF', 'POSITION_C'],
-		tec=['SPEED', 'ACR', 'POWER'],
-		skill= [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-		door=['INDOOR', 'OUTDOOR'];
-
+//	var weight = ['WEIGHT_LOW', 'WEIGHT_MIDDLE', 'WEIGHT_HIGH'],
+//		position= ['POSITION_S', 'POSITION_SF', 'POSITION_PF', 'POSITION_C'],
+//		tec=['SPEED', 'ACR', 'POWER'],
+//		skill= [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+//		door=['INDOOR', 'OUTDOOR'];
+			var	sex = ['MALE', 'FEMALE'], //性别：男女
+				weight= ['LIGHT', 'GENERAL', 'HEAVY'], //体重：低中高
+				level=['LOW', 'MIDDLE', 'HIGH', 'UNKNOW'], //水平：低中高
+				battle_type=['FLAT', 'ROTATE', 'ACCURATE', 'UNKNOW'], //击球类型：暴力平击、强烈旋转、精确落点、不清楚
+				style=['ATTACK', 'DEFEND', 'ALL','UNKNOW'], //风格偏好：崇尚进攻、坚固防守、攻守兼备、不清楚
+				strength= ['BORROW', 'INITA', 'UNKNOW'], //发力类型：借力型、主动发力型、不清楚
+				backhand=['SINGLE','DOUBLE'],//反手类型：单手反拍、双手反拍
+				skill=[0,1,2,3,4,5,6],//撒手锏：借力打力、网前截杀、重炮发球、放小球、超级上旋、月亮球、不清楚
+				price=['LOW','MIDDLE','HIGH'];//价格：高中低
 
 
 
@@ -47,35 +55,84 @@ define(function(require, exports, module) {
 
 	require.async(['js/AIChoose.js', 'js/equipment.js'], function(AICE, EQUIPMENT) {
 		document.body.innerHTML='';
-		var equipment_info = EQUIPMENT['BASKETBALL']['SHOSE']; //装备信息
+//		var equipment_info = EQUIPMENT['BASKETBALL']['SHOSE']; //装备信息
+		var equipment_info = EQUIPMENT['TENNIS']['RACKET']; //装备信息
 		var options = {
-			'sport_type': 'BASKETBALL',
-			'equipment_type': 'SHOSE'
+			'sport_type': 'TENNIS',
+			'equipment_type': 'RACKET'
 		}
-		for(var i = 0;i<weight.length;i++){
-			var _weight = weight[i];
-			for(var j =0; j<position.length;j++){
-				var _position = position[j];
-				for(var z=0;z<tec.length;z++){
-					var _tec =tec[z];
-					for(var a =0;a<skill.length;a++){
-						var _skill = skill[a];
-						for(var b = 0;b<door.length;b++){
-							var _door = door[b];
-							var select_items={
-								'weight':_weight,
-								'position':_position,
-								'tec':_tec,
-								'skill':_skill,
-								'door':_door
-							}
-							console.log(select_items);
+		var chongfu={};
+		for(var i = 0;i<sex.length;i++){
+			var _sex = sex[i];
+			for(var j =0; j<weight.length;j++){
+				var _weight = weight[j];
+				for(var z=0;z<level.length;z++){
+					var _level =level[z];
+					for(var a =0;a<battle_type.length;a++){
+						var _battle_type = battle_type[a];
+						for(var b = 0;b<style.length;b++){
+							var _style = style[b];
+							for(var c= 0;c<strength.length;c++){
+								var _strength = strength[c];
+								for(var f =0;f<backhand.length;f++){
+									var _backhand = backhand[f];
+								for(var d = 0;d<skill.length;d++){
+									var _skill = skill[d];
+									if(_level == 'UNKNOW'){
+										for(var e =0;e<price.length;e++){
+											var _price = price[e];
+											var select_items ={
+												'sex':_sex,
+               									'weight': _weight,
+								                'level': _level,
+								                'battle_type': _battle_type,
+								                'strength': _strength,
+								                'style': _style,
+								                'backhand':_backhand,
+								                'skill':_skill,
+								                'price':_price
+											}
+											console.log(select_items);
 							
 							var chooseEquipment = new AICE(options);
 							var result = chooseEquipment.init().AIChoose(equipment_info,select_items),
 							slogan = chooseEquipment.getMatchSlogan(select_items);
-							showTest(result,slogan,select_items)
-						}
+							if(chongfu[result.match_tag]){
+
+							}else{
+								chongfu[result.match_tag] = true;
+								showTest(result,slogan,select_items)
+
+							}
+										}
+									}else{
+										var select_items ={
+												'sex':_sex,
+               									'weight': _weight,
+								                'level': _level,
+								                'battle_type': _battle_type,
+								                'strength': _strength,
+								                'style': _style,
+								                'backhand':_backhand,
+								                'skill':_skill,
+								                'price':'NONE'
+											}
+											console.log(select_items);
+							
+							var chooseEquipment = new AICE(options);
+							var result = chooseEquipment.init().AIChoose(equipment_info,select_items),
+							slogan = chooseEquipment.getMatchSlogan(select_items);
+							if(chongfu[result.match_tag]){
+
+							}else{
+								chongfu[result.match_tag] = true;
+								showTest(result,slogan,select_items)
+
+							}
+									}
+								}
+							}							
+						}}
 					}
 				}
 			}

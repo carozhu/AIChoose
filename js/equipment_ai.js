@@ -15,6 +15,7 @@ define('level', function() {
 	}
 });
 
+
 /**篮球鞋选装逻辑**/
 define('basketball_shose', ['level'], function(require, exports, module) {
 	var LEVEL = require('level');
@@ -435,6 +436,8 @@ define('basketball_shose', ['level'], function(require, exports, module) {
 	}
 	module.exports = basketball_shose;
 });
+
+
 /**网球拍选装逻辑**/
 define('tennis_racket', ['level'], function(require, exports, module) {
 	var LEVEL = require('level');
@@ -542,15 +545,15 @@ define('tennis_racket', ['level'], function(require, exports, module) {
 									break;
 								case 'ROTATE':
 									//强烈旋转
-									_factorScore.RACKET_TYPE += 0;
+									_factorScore.RACKET_TYPE -= 5;
 									break;
 								case 'ACCURATE':
 									//精确落点
-									_factorScore.RACKET_TYPE -= 5;
+									_factorScore.RACKET_TYPE -= 0;
 									break;
 								case 'UNKNOW':
 									//不清楚
-									_factorScore.RACKET_TYPE -= 5;
+									_factorScore.RACKET_TYPE -= 0;
 									break;
 							}
 							break;
@@ -559,11 +562,11 @@ define('tennis_racket', ['level'], function(require, exports, module) {
 							switch (value) {
 								case 'BORROW':
 									//借力型
-									_factorScore.BALANCE += 1;
+									_factorScore.BALANCE -= 1;
 									break;
 								case 'INITA':
 									//主动发力型
-									_factorScore.BALANCE -= 1;
+									_factorScore.BALANCE += 1;
 									break;
 								case 'UNKNOW':
 									//不清楚
@@ -588,7 +591,7 @@ define('tennis_racket', ['level'], function(require, exports, module) {
 									break;
 								case 'UNKONW':
 									//不清楚
-									_factorScore.RACKET_TYPE -= 5;
+									_factorScore.RACKET_TYPE -= 0;
 									break;
 							}
 							break;
@@ -609,24 +612,24 @@ define('tennis_racket', ['level'], function(require, exports, module) {
 						case 'skill':
 							switch(parseInt(value,10)){
 								case 0:
-									//借力打力
+									//大角度调动
 									_factorScore.RACKET_TYPE -= 0;
 									break;
 								case 1:
 									//网前截杀
-									_factorScore.RACKET_TYPE -= 0;
+									_factorScore.RACKET_TYPE += 1;
 									break;
 								case 2:
 									//重炮发球
-									_factorScore.RACKET_TYPE += 1;
+									_factorScore.RACKET_TYPE += 2;
 									break;
 								case 3:
 									//放小球
-									_factorScore.RACKET_TYPE -= 1;
+									_factorScore.RACKET_TYPE -= 0;
 									break;
 								case 4:
 									//超级上旋
-									_factorScore.RACKET_TYPE += 1;
+									_factorScore.RACKET_TYPE -= 2;
 									break;
 								case 5:
 									//月亮球
@@ -716,11 +719,15 @@ define('tennis_racket', ['level'], function(require, exports, module) {
 			//球拍类型
 			if(price_score != -1){
 				tag_arr.push(LEVEL.NONE);
-			}else if( -12<=racket_type_score && racket_type_score<=-5){
+			}else if( -12<=racket_type_score && racket_type_score<=-8){
 				tag_arr.push(LEVEL.LOW);
-			}else if(-4 <= racket_type_score && racket_type_score <=4){
+			}else if(-7 <= racket_type_score && racket_type_score <=-3){
+				tag_arr.push(LEVEL.MIDDLE_LOW);
+			}else if(-2 <= racket_type_score && racket_type_score <=2){
 				tag_arr.push(LEVEL.MIDDLE);
-			}else if(5 <= racket_type_score && racket_type_score <=12){
+			}else if(3 <=racket_type_score && racket_type_score <=7){
+				tag_arr.push(LEVEL.MIDDLE_HIGH);
+			}else if(8<=racket_type_score && racket_type_score <=12){
 				tag_arr.push(LEVEL.HIGH);
 			}
 			
@@ -763,7 +770,7 @@ define('tennis_racket', ['level'], function(require, exports, module) {
 				_1_ = 1;
 			}else if(_1_index == 3 ){
 				_1_ =2;
-			else{
+			}else{
 				_1_ = _1_index+1;
 			}
 			
@@ -772,6 +779,7 @@ define('tennis_racket', ['level'], function(require, exports, module) {
 			}else{			
 				_2_ = _2_index+2;
 			}
+			
 			similarTag.push(item_tag[0] + '' + LEVEL.A_Z[_1_] + '' + item_tag[2] + '' + item_tag[3] + '' + item_tag[4]);
 			similarTag.push(item_tag[0] + '' + item_tag[1] + '' + LEVEL.A_Z[_2_]+ '' + item_tag[3] + '' + item_tag[4]);
 			that.tag.similarTag = similarTag;
@@ -799,6 +807,9 @@ define('tennis_racket', ['level'], function(require, exports, module) {
 	}
 	module.exports = tennis_racket;
 });
+
+
+
 /**跑步鞋装备选装逻辑**/
 define('run_shose', ['level'], function(require, exports, module) {
 	var LEVEL = require('level');
@@ -1130,6 +1141,9 @@ define('run_shose', ['level'], function(require, exports, module) {
 	}
 	module.exports = run_shose;
 });
+
+
+
 /**选装逻辑**/
 define(function(require, exports, module) {
 	var basketball_shose = require('basketball_shose'); //篮球鞋
